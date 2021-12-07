@@ -1,0 +1,70 @@
+﻿@model TpFinalJoaquinGaido.Models.Producto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Producto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Favorito" class="control-label"></label>
+                <input asp-for="Favorito" type="checkbox" class="form-control" />
+                <span asp-validation-for="Favorito" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Marcaid" class="control-label">Marca</label>
+                <select asp-for="Marcaid" class="form-control" asp-items="ViewBag.Marcaid"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriaId" class="control-label">Categoria</label>
+                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProveedorId" class="control-label">Proveedores</label>
+                <select asp-for="ProveedorId" class="form-control" asp-items="ViewBag.IdProveedores"></select>
+            </div>
+            <div class="form-group">
+                <img src="" id="imagen" class="img-thumbnail"
+                     style="max-height: 75px;max-width: 75px;"
+                     asp-append-version="true" />
+                <label class="control-label">Seleccione fotografia</label>
+                <input asp-for="Imagen" type="file" id="seleccionImg" accept="image/jpeg" id="seleccionImg" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="~/js//preview.js"></script>
